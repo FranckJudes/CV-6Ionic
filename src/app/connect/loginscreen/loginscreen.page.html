@@ -1,0 +1,51 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar class="">
+    <ion-title>loginscreen</ion-title>
+  </ion-toolbar>
+  <ion-button slot="start">
+    <ion-back-button defaultHref="login" text=""></ion-back-button>
+  </ion-button>
+</ion-header> -->
+
+<ion-content>
+  <ion-card class="ion-no-margin">
+        <!-- <ion-img src="assets/IonicAssets/header1.png"></ion-img> -->
+  
+    <ion-card-content>
+      <form [formGroup]="ValidationFormUser" (ngSubmit)="LoginUser(validationFormUser.valid)">
+        <div class="wrapform">
+          <ion-item>
+              <ion-icon name="mail-outline"></ion-icon>
+              <ion-input name="email" [(ngModel)]="email" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <ion-input name="password" placeholder="**********" [(ngModel)]="password" required></ion-input>
+          </ion-item> 
+        </div>
+        <div class="mot_oublier">
+          <ion-button fill="clear" class="ion-no-padding">mot de passe oublier?</ion-button>
+        </div>
+        <div class="sign-btn-wrap">
+          <ion-button fill="solid" type="submit" shape="round" class="sign-btn" [disable]="!validationFormUser.valid">S'inscire</ion-button>
+        </div>
+        <div class="social-btns">
+          <ion-button fill="clear"  class="googlebtn ion-no-padding">
+            <ion-img src="assets/IonicAssets/google.png"></ion-img>
+          </ion-button>
+          <ion-button fill="clear"  class="facebookbtn ion-no-padding">
+            <ion-img src="assets/IonicAssets/facebook.png"></ion-img>
+          </ion-button>
+          <ion-button fill="clear"  class="facebookbtn ion-no-padding">
+            <ion-img src="assets/IonicAssets/apple.png"></ion-img>
+          </ion-button>
+
+        </div>
+      </form> 
+    </ion-card-content>
+    <div class="ion-card-footer">
+      <span>Tu as un Compte?</span><button class="ion-no-padding">Se Connecter</button>
+    </div>
+  </ion-card>  
+   
+</ion-content>
