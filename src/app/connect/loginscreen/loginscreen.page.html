@@ -12,22 +12,36 @@
         <!-- <ion-img src="assets/IonicAssets/header1.png"></ion-img> -->
   
     <ion-card-content>
-      <form [formGroup]="ValidationFormUser" (ngSubmit)="LoginUser(validationFormUser.valid)">
+      <form [formGroup]="validationFormUser" (ngSubmit)="LoginUser(validationFormUser.value)">
         <div class="wrapform">
           <ion-item>
               <ion-icon name="mail-outline"></ion-icon>
-              <ion-input name="email" [(ngModel)]="email" required></ion-input>
+              <ion-input name="email" formControlName="email" placeholder="Email" required></ion-input>
           </ion-item>
+          <div>
+            <ng-container *ngFor="let validation of validationUserMessage.email">
+                  <div class="error_message" *ngIf="validationFormUser.get('email').hasError(validation.type) && (validationFormUser.get('email').dirty || validationFormUser.get('email').touched)">
+                     {{validation.message}}
+                  </div>
+            </ng-container>
+        </div>
           <ion-item>
             <ion-icon name="lock-closed-outline"></ion-icon>
-            <ion-input name="password" placeholder="**********" [(ngModel)]="password" required></ion-input>
-          </ion-item> 
+            <ion-input name="password" type="password"formControlName="password" placeholder="**********"  required></ion-input>
+          </ion-item>
+          <div>
+            <ng-container *ngFor="let validation of validationUserMessage.password">
+                 <div class="error_message" *ngIf="validationFormUser.get('password').hasError(validation.type) && (validationFormUser.get('password').dirty || validationFormUser.get('password').touched)">
+                    {{validation.message}}
+                 </div>
+             </ng-container>
+        </div> 
         </div>
         <div class="mot_oublier">
           <ion-button fill="clear" class="ion-no-padding">mot de passe oublier?</ion-button>
         </div>
         <div class="sign-btn-wrap">
-          <ion-button fill="solid" type="submit" shape="round" class="sign-btn" [disable]="!validationFormUser.valid">S'inscire</ion-button>
+          <ion-button fill="solid" type="submit" sclass="sign-btn" [disabled]="!validationFormUser.valid">S'inscire</ion-button>
         </div>
         <div class="social-btns">
           <ion-button fill="clear"  class="googlebtn ion-no-padding">
