@@ -1,6 +1,7 @@
 ion-content{
 --ion-background-color: transparent;
 --ion-item-background: transparent !important;
+  
 }
 
 .bg-color{
@@ -42,7 +43,8 @@ ion-card-subtitle{
 }
 
 ion-card-content{
-    padding-top: 30px;
+    padding-top: 10px;
+   
 }
 ion-item{
     color:#74787E;
@@ -52,7 +54,8 @@ ion-item{
     --padding-start:0;
     --inner-padding-end:0;
     --highlight-color-invalid: #215AB7;
-    --highlight-color-valid: #215AB7;  
+    --highlight-color-valid: #215AB7; 
+    
         font-size: 13px;
         ion-input{
         color:#74787E;
@@ -124,4 +127,11 @@ ion-item{
     width:30px;
     padding-left: 5px !important;
     }
+}
+
+.error_message{
+    font-size: 6px;
+    font-weight : 200;
+    color: #913e87;
+
 }

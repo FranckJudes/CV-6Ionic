@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-  constructor() { }
+ 
+  constructor(  public router : Router){ }
 
   ngOnInit() {
   }
-
+  gotosignUp(){
+    this.router.navigate([ 'signup'])
+  }
+  gotosignIn(){
+    this.router.navigate(['loginscreen']);
+  }
 }

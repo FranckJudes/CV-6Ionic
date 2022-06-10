@@ -1,8 +1,3 @@
-<!-- <ion-header class="ion-no-border">
-  <ion-toolbar>
-   
-  </ion-toolbar>
-</ion-header> -->
 
 <ion-content>
   <ion-card>
@@ -12,8 +7,8 @@
     </ion-card-header>
     <ion-card-content>
       <div class="signin-bts">
-        <ion-button fill="solid" size="small" shape="round" class="loginbtn">Login</ion-button>
-        <ion-button fill="outline" size="small"  shape="round" color="dark" >Sign In</ion-button>
+        <ion-button fill="solid" size="small" shape="round" class="loginbtn" (click)="gotosignUp()">Inscrire</ion-button>
+        <ion-button fill="outline" size="small"  shape="round" color="dark" (click)="gotosignIn()" >Connecter</ion-button>
 
       </div>
       <div class="text-tag">

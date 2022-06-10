@@ -1,14 +1,3 @@
-<!-- <ion-header class="ion-no-header">
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-    <ion-button slot="start">
-      <ion-back-button defaultHref="login" text="">
-
-      </ion-back-button>
-    </ion-button>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content class="bg-color ion-no-margin">
   <ion-card>
     <ion-card-header>
@@ -19,39 +8,68 @@
         Creation d'un CV
       </ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-         <ion-input name="names" type="text" placeholder="Votre nom">
-           <ion-icon name="person-outline"></ion-icon>
-         </ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input name="phone" type="text" placeholder="No. Telephone">
-          <ion-icon name="call-outline"></ion-icon>
-        </ion-input>
-     </ion-item>
-     <ion-item>
-      <ion-input name="email" type="text" placeholder="Email">
-        <ion-icon name="mail-outline"></ion-icon>
-      </ion-input>
-   </ion-item>
-   <div class="sign-btn-wrap">
-    <ion-button fill="solid" shape="round" class="sign-btn">Connecter</ion-button>
-  </div>
-  <div class="social-btns">
-    <ion-button fill="clear"  class="googlebtn ion-no-padding">
-      <ion-img src="assets/IonicAssets/google.png"></ion-img>
-    </ion-button>
-    <ion-button fill="clear"  class="facebookbtn ion-no-padding">
-      <ion-img src="assets/IonicAssets/facebook.png"></ion-img>
-    </ion-button>
-    <ion-button fill="clear"  class="facebookbtn ion-no-padding">
-      <ion-img src="assets/IonicAssets/apple.png"></ion-img>
-    </ion-button>
-  </div>
-  <div class="ion-card-footer">
-    <span>Tu as un Compte?</span><button class="ion-no-padding">Connexion</button>
-  </div>
+        <ion-card-content>
+        <form [formGroup]="validationFormUser" (ngSubmit)="registerUser(validationFormUser.value)">
+          <ion-item>
+              <ion-input name="names" type="text" placeholder="Votre nom"  formControlName="names">
+                <ion-icon name="person-outline"></ion-icon>
+            </ion-input>
+          </ion-item>
+          <ng-container *ngFor="let validation of validationUserMessage.names">
+            <div class="error_message" *ngIf="validationFormUser.get('names').hasError(validation.type) && (validationFormUser.get('names').dirty || validationFormUser.get('names').touched)">
+               {{validation.message}}
+            </div>
+          </ng-container>  
+          <ion-item>
+            <ion-input name="phone" type="number" placeholder="No. Telephone"  formControlName="phone">
+              <ion-icon name="call-outline"></ion-icon>
+            </ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validationUserMessage.phone">
+          <div class="error_message" *ngIf="validationFormUser.get('phone').hasError(validation.type) && (validationFormUser.get('phone').dirty || validationFormUser.get('phone').touched)">
+             {{validation.message}}
+          </div>
+        </ng-container>
+        <ion-item>
+            <ion-input name="email" type="text" placeholder="E-mail"  formControlName="email">
+              <ion-icon name="mail-outline"></ion-icon>
+            </ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validationUserMessage.email">
+          <div class="error_message" *ngIf="validationFormUser.get('email').hasError(validation.type) && (validationFormUser.get('email').dirty || validationFormUser.get('email').touched)">
+             {{validation.message}}
+          </div>
+        </ng-container>
+        <ion-item>
+            <ion-input name="email" type="password" placeholder="password"  formControlName="password">
+              <ion-icon name="lock-closed-outline"></ion-icon>            
+            </ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validationUserMessage.password">
+          <div class="error_message" *ngIf="validationFormUser.get('password').hasError(validation.type) && (validationFormUser.get('password').dirty || validationFormUser.get('password').touched)">
+             {{validation.message}}
+          </div>
+        </ng-container>
+        <div class="sign-btn-wrap">
+          <ion-button fill="solid" size="small" type="submit "shape="round" class="sign-btn"  [disabled]="!validationFormUser.valid">S'inscrire</ion-button>
+        </div>
+   
+    
+      <div class="social-btns">
+        <ion-button fill="clear"  class="googlebtn ion-no-padding">
+          <ion-img src="assets/IonicAssets/google.png"></ion-img>
+        </ion-button>
+        <ion-button fill="clear"  class="facebookbtn ion-no-padding">
+          <ion-img src="assets/IonicAssets/facebook.png"></ion-img>
+        </ion-button>
+        <ion-button fill="clear"  class="facebookbtn ion-no-padding">
+          <ion-img src="assets/IonicAssets/apple.png"></ion-img>
+        </ion-button>
+      </div>
+        <div class="ion-card-footer">
+          <span>Tu as un Compte?</span><button class="ion-no-padding"  (click)="gotosignIn()">Connexion</button>
+        </div>
+      </form>   
     </ion-card-content>
   </ion-card>
 </ion-content>
